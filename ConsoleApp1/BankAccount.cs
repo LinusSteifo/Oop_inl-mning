@@ -1,10 +1,21 @@
 public class BankAccount
 {
-    public string Owner;
-    public double Balance;
+    private string owner;
+    private double balance;
 
-    public void ShowInfo()
+    public BankAccount(string owner, double balance)
     {
-        Console.WriteLine($"{Owner} har {Balance} kr");
+        this.owner = owner;
+        this.balance = balance;
     }
+
+    public void Deposit(double amount) => balance += amount;
+
+    public void Withdraw(double amount)
+    {
+        if (amount <= balance) balance -= amount;
+        else Console.WriteLine("Inte tillräckligt med pengar");
+    }
+
+    public void ShowInfo() => Console.WriteLine($"{owner} har {balance} kr");
 }
